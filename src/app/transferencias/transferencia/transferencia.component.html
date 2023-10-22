@@ -1,0 +1,45 @@
+<h1 class="display-4 mt-2">{{this.title}} Transferencia</h1>
+<form class="form row g-3" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group col-md-4" [ngClass]="displayFieldCss('contaOrigem')">
+    <label for="contaOrigem" class="control-label required">Conta de Origem</label>
+    <input type="text" [(ngModel)]="this.transferencia.contaOrigem" formControlName="contaOrigem" class="form-control" placeholder="Ex: 1628159-P">
+    <app-field-error-display [displayError]="isFieldValid('contaOrigem')" errorMsg="Por Favor Informe a Conta de Origem"></app-field-error-display>
+  </div>
+  <div class="form-group col-md-4">
+    <label for="contaDestino" class="control-label required">Conta de Destino</label>
+    <input type="text" [(ngModel)]="this.transferencia.contaDestino" formControlName="contaDestino" class="form-control" placeholder="Ex: 0442994-P">
+    <app-field-error-display [displayError]="isFieldValid('contaDestino')" errorMsg="Por Favor Informe a Conta de Destino"></app-field-error-display>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="valorDaTranferencia" class="control-label required">Valor da Transferencia</label>
+    <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" [(ngModel)]="this.transferencia.valorDaTranferencia" formControlName="valorDaTranferencia" class="form-control" (ngModelChange)="this.calcularTaxa()" placeholder="Ex: R$100,00">
+    <app-field-error-display [displayError]="isFieldValid('valorDaTranferencia')" errorMsg="Por Favor Informe o Valor Da Transferencia"></app-field-error-display>
+  </div>
+  <div class="form-group col-md-3">
+    <label for="dataDaTransferencia" class="control-label required">Data Transferencia</label>
+    <input type="date" min="{{this.transferencia.dataDeAgendamento | date:'yyyy-MM-dd'}}" [(ngModel)]="this.transferencia.dataDaTransferencia" formControlName="dataDaTransferencia" class="form-control" (change)="this.calcularTaxa()">
+    <app-field-error-display [displayError]="isFieldValid('dataDaTransferencia')" errorMsg="Por Favor Informe a Data da Transferencia"></app-field-error-display>
+  </div>
+  <div class="form-group col-md-3">
+    <label for="taxa" class="control-label">Taxa</label>
+    <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="form-control" [value]="this.transferencia.taxa.toString() | currency:'BRL':true:'1.2-2'" disabled>
+  </div>
+  <div class="col-12">
+    <div class="float-end">
+      <button type="btn btn-danger" class="btn btn-outline-danger" (click)="this.backToThePreviousPage()">Cancelar</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Salvar</button>
+    </div>
+  </div>
+</form>
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+  Tooltip on top
+</button>
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+  Tooltip on right
+</button>
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+  Tooltip on bottom
+</button>
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+  Tooltip on left
+</button>
