@@ -17,7 +17,7 @@
   </div>
   <div class="form-group col-md-3">
     <label for="dataDaTransferencia" class="control-label required">Data Transferencia</label>
-    <input type="date" min="{{this.transferencia.dataDeAgendamento | date:'yyyy-MM-dd'}}" [(ngModel)]="this.transferencia.dataDaTransferencia" formControlName="dataDaTransferencia" class="form-control" (change)="this.calcularTaxa()">
+    <input type="date" min="{{this.transferencia.dataDeAgendamento | date:'yyyy-MM-dd'}}" [(ngModel)]="this.transferencia.dataDaTransferenciaISOString" formControlName="dataDaTransferencia" class="form-control" (change)="this.calcularTaxa()">
     <app-field-error-display [displayError]="isFieldValid('dataDaTransferencia')" errorMsg="Por Favor Informe a Data da Transferencia"></app-field-error-display>
   </div>
   <div class="form-group col-md-3">
@@ -31,15 +31,3 @@
     </div>
   </div>
 </form>
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-  Tooltip on top
-</button>
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
-  Tooltip on right
-</button>
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
-  Tooltip on bottom
-</button>
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
-  Tooltip on left
-</button>

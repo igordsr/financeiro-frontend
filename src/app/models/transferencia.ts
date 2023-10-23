@@ -18,6 +18,7 @@ export class Transferencia implements ToDto{
     const yyyy = today.getFullYear();
     const st = `${yyyy}-${mm}-${dd}`
     this._dataDeAgendamento = new Date(st);
+    this._dataDaTransferencia = new Date(st);
   }
 
   public get id(): string {
@@ -53,6 +54,14 @@ export class Transferencia implements ToDto{
   }
   public set taxa(value: number) {
     this._taxa = value;
+  }
+
+  public get dataDaTransferenciaISOString(): string {
+    return this._dataDaTransferencia.toISOString().split('T')[0];
+  }
+
+  public set dataDaTransferenciaISOString(value: Date) {
+    this._dataDaTransferencia = new Date(value);
   }
 
   public get dataDaTransferencia(): Date {

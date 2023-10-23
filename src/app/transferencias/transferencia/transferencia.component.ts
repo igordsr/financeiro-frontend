@@ -32,7 +32,10 @@ export class TransferenciaComponent implements OnInit {
       if (id != null) {
         this.action = Action.EDIT
         this.title = "Editar";
-        this.transferenciaService.findById(id).subscribe(obj => this.transferencia = obj);
+        this.transferenciaService.findById(id).subscribe(obj => {
+          this.transferencia = obj
+          this.calcularTaxa();
+        });
       }
       this.form = this.formBuilder.group({
         contaOrigem: ['', Validators.required,  ],
@@ -88,12 +91,13 @@ export class TransferenciaComponent implements OnInit {
   protected calcularTaxa(){
     if(this.taxas.length){
       if(this.transferencia.dataDaTransferencia && this.transferencia.valorDaTranferencia > 0){
-        const dataDaTransferencia = new Date(this.transferencia.dataDaTransferencia);
-        const dataDeAgendamento  = new Date(this.transferencia.dataDeAgendamento);
-        dataDaTransferencia.setDate(dataDaTransferencia.getDate() + 1)
+        const dataDaTransferencia = new Date(this.transferencia.dataDaTransferencia.toISOString().split('T')[0]);
+        const dataDeAgendamento  = new Date(this.transferencia.dataDeAgendamento.toISOString().split('T')[0]);
 
         const diff = Math.abs(dataDaTransferencia.getTime() - dataDeAgendamento.getTime()); // Subtrai uma data pela outra
         const days = Math.ceil(diff / (1000 * 60 * 60 * 24)); // Divide o total pelo total de milisegundos correspondentes a 1 dia. (1000 milisegundos = 1 segundo).
+
+
         const txArr = this.taxas.filter(obj => days >= obj.inicio && days <= obj.fim);
         if(txArr.length == 0){
           alert("O agendamento da tranzação não pode exceder 50 dias");
@@ -103,7 +107,7 @@ export class TransferenciaComponent implements OnInit {
           return;
         }
         const taxa:Taxa = txArr[0];
-        this.transferencia.taxa = (this.transferencia.valorDaTranferencia * taxa.aliquota) / 100;
+        this.transferencia.taxa = taxa.aliquota != 0 ? (this.transferencia.valorDaTranferencia * taxa.aliquota) / 100 : taxa.valor;
         if(this.transferencia.taxa < taxa.valor){
           this.transferencia.taxa = taxa.valor;
         }

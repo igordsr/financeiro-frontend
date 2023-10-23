@@ -25,8 +25,8 @@ export class TransferenciaService {
       transferencia.contaDestino = response.contaDestino;
       transferencia.valorDaTranferencia = response.valorDaTranferencia
       transferencia.taxa = response.taxa
-      transferencia.dataDaTransferencia = response.dataDaTransferencia
-      transferencia.dataDeAgendamento = response.dataDeAgendamento
+      transferencia.dataDaTransferencia = new Date(response.dataDaTransferencia);
+      transferencia.dataDeAgendamento = new Date(response.dataDeAgendamento);
       return transferencia;
     }));
   }
