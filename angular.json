@@ -78,6 +78,20 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+            },
+            "server": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.server.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -93,6 +107,9 @@
             },
             "development": {
               "browserTarget": "financeiro-frontend:build:development"
+            },
+            "server": {
+              "browserTarget": "financeiro-frontend:build:server"
             }
           },
           "defaultConfiguration": "development"

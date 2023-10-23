@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "env": "ng serve --configuration=environment",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "local": "ng serve --proxy-config proxy.conf.json",
+    "start": "ng serve --configuration=server",
     "build": "ng build --build-optimizer --configuration=production",
     "watch": "ng build --watch --configuration=development",
     "test": "ng test",

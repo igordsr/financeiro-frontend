@@ -1,27 +1,19 @@
-# FinanceiroFrontend
+# Financeiro Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.8.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) version 16.1.8.
+
+# ATENÇÃO
+Esse projeto depende que a aplicação backend esteja iniciada para funcionar corretamente. Portanto para o inicio imediado, esse projeto foi configurado para iniciar e consumir os serviços de um servidor em nuvem.
+
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Execute `ng serve` para iniciar o projeto. Navegue para essa url `http://localhost:4200/`. O aplicativo será recarregado automaticamente se você alterar algum dos arquivos de origem.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Executar Projeto Localhost
+Para que o projeto consuma os serviços de um servidor local execute o comandao `npm run local`. IMPORTANTE que o serviço backend seja inicado antes do angular.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Execute `ng build` para buildar o projeto. Os artefatos de construção serão armazenados no diretorio `dist/`.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
