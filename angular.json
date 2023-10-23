@@ -88,6 +88,9 @@
             "production": {
               "browserTarget": "financeiro-frontend:build:production"
             },
+            "environment": {
+              "browserTarget": "financeiro-frontend:build:environment"
+            },
             "development": {
               "browserTarget": "financeiro-frontend:build:development"
             }
